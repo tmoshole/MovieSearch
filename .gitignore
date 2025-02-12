@@ -1,0 +1,56 @@
+# dependencies
+node_modules/
+.yarn/
+.yarnrc.yml
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Expo cache
+.cache/
+
+# Metro Bundler cache directory
+.metro/
+
+# Dependency lock files
+# yarn.lock
+package-lock.json
+
+# Editor specific files
+.vscode/
+.idea/
+
+# Metro
+.metro-health-check*
+
+# Android build folder
+android/build/
+
+# iOS build folder
+ios/build/
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
