@@ -1,7 +1,6 @@
-// MovieCard.js
 import React from "react";
 import { TouchableOpacity, Text, View, Image } from "react-native";
-import { FontAwesome } from "react-native-vector-icons";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { Card } from "react-native-paper";
 import styles from "./styles";
 
@@ -22,7 +21,7 @@ const MovieCard = ({ movie, onSelectMovie }) => {
                         {movie.originalTitle}
                     </Text>
                     <View style={styles.ratingContainer}>
-                        <FontAwesome name="star" size={16} color="#FFD700" />
+                        <Ionicons name="star" size={20} color="#FFD700" />
                         <Text style={styles.movieRating}>{movie.averageRating}/10</Text>
                     </View>
                 </Card.Content>

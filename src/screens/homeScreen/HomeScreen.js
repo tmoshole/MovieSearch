@@ -32,7 +32,7 @@ const HomeScreen = () => {
 
   const handleSelectMovie = (movie) => {
     dispatch(setSelectedMovie(movie));
-    navigation.navigate("MovieDetail");
+    navigation.navigate("MovieDetail", { movieId: movie.id }); 
   };
 
   const moviesToDisplay = movies.slice(0, 10);
