@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
 import { store } from "./src/store/redux";
 import HomeScreen from "./src/screens/homeScreen/HomeScreen";
-import MovieDetailScreen from "./src/screens/MovieDetailsScreen";
+import MovieDetailScreen from "./src/screens/movieDetailsScreen/MovieDetailsScreen";
 
 const Stack = createStackNavigator();
 

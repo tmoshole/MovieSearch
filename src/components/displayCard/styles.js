@@ -10,15 +10,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#333",
     alignItems: 'center',
   },
-  searchSection: {
-    backgroundColor: "#444",
-    padding: 20,
-    marginBottom: 15,
-    marginTop: 40,
-    margin: 10,
-    borderRadius: 8,
-    width: "90%",
-  },
   cardContainer: {
     width: CARD_WIDTH,
     margin: CARD_MARGIN / 2,
@@ -53,9 +44,6 @@ const styles = StyleSheet.create({
     color: "#ddd",
     fontSize: 14,
     marginLeft: 5,
-  },
-  loader: {
-    marginTop: 200,
   },
 });
 
