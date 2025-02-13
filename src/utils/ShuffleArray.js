@@ -5,3 +5,5 @@ export const ShuffleArray = (array) => {
     }
     return array;
 };
+ {/* TODO: Use this function to display 10 different random movies everytime the user enters the app */}
+

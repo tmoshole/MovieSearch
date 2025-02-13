@@ -14,13 +14,15 @@ export default StyleSheet.create({
   image: {
     width: "100%",
     height: 250,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   detailsContainer: {
     padding: 16,
     backgroundColor: "#121212",
-    borderTopLeftRadius: 20,
+    borderTopLeftRadius: 40,
     borderTopRightRadius: 20,
-    marginTop: -20,
+    marginTop: -10,
   },
   title: {
     fontSize: 28,
