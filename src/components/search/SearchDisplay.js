@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View, Text, FlatList, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from "react-native";
+import { Modal, View, Text, FlatList, TouchableOpacity, Image, ActivityIndicator } from "react-native";
 import { FontAwesome } from "react-native-vector-icons";
 import styles from "./styles";
 

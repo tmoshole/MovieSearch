@@ -1,25 +1,32 @@
-import React from "react";
-import { View, Text, Image, FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { View, ActivityIndicator, Text } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovieDetails } from "../../store/movieReducer";
+import styles from "./styles";
+import MovieDetails from "../../components/movieDetails/MovieDetails";
 
-const MovieDetailScreen = () => {
-  const selectedMovie = useSelector((state) => state.movies.selectedMovie);
+const MovieDetailScreen = ({ navigation, route }) => {
+  const { movieId } = route.params;
+  const dispatch = useDispatch();
+  const { selectedMovieDetails, loading, error } = useSelector(
+    (state) => state.movies
+  );
 
-  if (!selectedMovie) return <Text>Loading...</Text>;
+  useEffect(() => {
+    dispatch(fetchMovieDetails(movieId));
+  }, [dispatch, movieId]);
 
   return (
-    <View>
-      <Image source={{ uri: selectedMovie.poster }} style={{ width: 200, height: 300 }} />
-      <Text>{selectedMovie.title}</Text>
-      <Text>{selectedMovie.description}</Text>
-      <Text>Actors: {selectedMovie.actors.join(", ")}</Text>
+    <View style={styles.container}>
+      {loading && <ActivityIndicator size="large" color="#FF6F00" style={styles.loader} />}
 
-      <Text>Reviews:</Text>
-      <FlatList
-        data={selectedMovie.reviews}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <Text>{item}</Text>}
-      />
+      {!loading && selectedMovieDetails && (
+        <MovieDetails movie={selectedMovieDetails} navigation={navigation} />
+      )}
+
+      {!loading && !error && !selectedMovieDetails && (
+        <Text style={styles.text}>No movie details available</Text>
+      )}
     </View>
   );
 };
