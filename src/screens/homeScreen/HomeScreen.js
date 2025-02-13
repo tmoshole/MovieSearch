@@ -6,7 +6,6 @@ import { useNavigation } from "@react-navigation/native";
 import Search from "../../components/search/SearchComponent";
 import SearchDisplay from "../../components/search/SearchDisplay";
 import DisplayCard from "../../components/displayCard/DisplayCard";
-import { ShuffleArray } from "../../utils/ShuffleArray";
 import styles from "./styles";
 
 const HomeScreen = () => {
@@ -36,7 +35,7 @@ const HomeScreen = () => {
     navigation.navigate("MovieDetail", { movieId: movie.id });
   };
 
-  const moviesToDisplay = ShuffleArray([...movies]).slice(0, 10);
+  const moviesToDisplay = movies.slice(0, 10);
 
   return (
     <View style={styles.container}>

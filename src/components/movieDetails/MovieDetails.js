@@ -3,6 +3,10 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 
+/*
+  The `movie` object passed to this component does not contain the `reviews` and `keywords` fields.
+*/
+
 const MovieDetails = ({ movie, navigation }) => {
   return (
     <>
@@ -18,7 +22,6 @@ const MovieDetails = ({ movie, navigation }) => {
 
         <Text style={styles.sectionTitle}>Storyline</Text>
         <Text style={styles.text}>{movie.description || "No storyline available"}</Text>
-
         <Text style={styles.sectionTitle}>Genres</Text>
         <View style={styles.genreContainer}>
           {movie.genres?.length > 0 ? (
