@@ -6,22 +6,46 @@ export const loadRandomMovies = createAsyncThunk("movies/loadRandom", useFetchMo
 export const searchForMovies = createAsyncThunk("movies/search", useSearchMovies);
 
 const movieSlice = createSlice({
-    name: "movies",
-    initialState: { movies: [], searchResults: [], selectedMovie: null },
-    reducers: {
-        setSelectedMovie: (state, action) => {
-            state.selectedMovie = action.payload;
-        },
+  name: "movies",
+  initialState: {
+    movies: [],
+    searchResults: [],
+    selectedMovie: null,
+    loading: false, // Track loading state
+    error: null, // Track errors if any
+  },
+  reducers: {
+    setSelectedMovie: (state, action) => {
+      state.selectedMovie = action.payload;
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(loadRandomMovies.fulfilled, (state, action) => {
-                state.movies = action.payload;
-            })
-            .addCase(searchForMovies.fulfilled, (state, action) => {
-                state.searchResults = action.payload;
-            });
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadRandomMovies.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(loadRandomMovies.fulfilled, (state, action) => {
+        state.movies = action.payload;
+        state.loading = false;
+      })
+      .addCase(loadRandomMovies.rejected, (state, action) => {
+        state.loading = false; 
+        state.error = action.error.message; 
+      })
+      .addCase(searchForMovies.pending, (state) => {
+        state.loading = true;
+        state.error = null; 
+      })
+      .addCase(searchForMovies.fulfilled, (state, action) => {
+        state.searchResults = action.payload;
+        state.loading = false;
+      })
+      .addCase(searchForMovies.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
 });
 
 export const { setSelectedMovie } = movieSlice.actions;

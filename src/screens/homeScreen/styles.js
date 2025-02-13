@@ -61,6 +61,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: 5,
   },
+  loader: {
+    marginTop: 200,
+  },
 });
 
 export default styles;
