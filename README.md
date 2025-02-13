@@ -13,13 +13,13 @@ Run yarn instrall \ npm install
 Run npx expo start
 
 # install expo app
-Download and install expo go app on your mobile device.
+Download and install expo go app on a mobile device.
 Instructions: https://docs.expo.dev/get-started/set-up-your-environment/
 
 # Instructions to get your RAPIDAPI_KEY for the API
 https://youtu.be/ytNyibPQFhw?si=HcbPKC_NHwMi3ZQd
 
-Make sure your laptop and phone are connected to the same wifi.
+Make sure the laptop and phone are connected to the same wifi.
 
 # App structure
 movie-app/
