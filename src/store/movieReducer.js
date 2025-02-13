@@ -3,11 +3,11 @@ import { useFetchMovies } from "../services/api/useFetchMovies";
 import { useSearchMovies } from "../services/api/useSearchMovies";
 import { fetchMovieDetailsAPI } from "../services/api/useFetchMovieDetails";
 
-export const fetchMovieDetails = createAsyncThunk(
-  "movies/fetchDetails",
-  async (movieId, { rejectWithValue }) => {
+export const loadRandomMovies = createAsyncThunk(
+  "movies/loadRandom",
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await fetchMovieDetailsAPI(movieId);
+      const response = await useFetchMovies();
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -15,12 +15,23 @@ export const fetchMovieDetails = createAsyncThunk(
   }
 );
 
-export const loadRandomMovies = createAsyncThunk("movies/loadRandom", useFetchMovies);
 export const searchForMovies = createAsyncThunk(
   "movies/search",
   async (searchTerm, { rejectWithValue }) => {
     try {
       const response = await useSearchMovies(searchTerm);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchMovieDetails = createAsyncThunk(
+  "movies/fetchDetails",
+  async (movieId, { rejectWithValue }) => {
+    try {
+      const response = await fetchMovieDetailsAPI(movieId);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -55,9 +66,9 @@ const movieSlice = createSlice({
       })
       .addCase(loadRandomMovies.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-      
+
       .addCase(searchForMovies.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -68,9 +79,9 @@ const movieSlice = createSlice({
       })
       .addCase(searchForMovies.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-      
+
       .addCase(fetchMovieDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -81,7 +92,7 @@ const movieSlice = createSlice({
       })
       .addCase(fetchMovieDetails.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       });
   },
 });
